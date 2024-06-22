@@ -1,0 +1,89 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager Dashboard</title>
+    <style>
+        /* Basic styling for demonstration */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .task-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .task-item {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .task-item.completed {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Task Manager App</h1>
+        <!-- Navigation links (e.g., Profile, Settings, Logout) -->
+        <nav>
+            
+            
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </nav>
+    </header>
+
+    <h1>Task List</h1>
+
+    <ul>
+        {% for task in tasks %}
+        <li>
+            <h3>{{ task.title }}</h3>
+            <p>{{ task.description }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('add_task') }}"><button>Add Task</button></a>
+    <br>
+    <a href="{{ url_for('edit_task') }}"><button>Edit Task</button></a>
+    <br>
+    
+
+</body>
+
+    <footer>
+        <p>&copy; 2024 Task Manager App. All rights reserved.</p>
+    </footer>
+</body>
+</html>
