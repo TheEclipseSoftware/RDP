@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Boston House Price Prediction</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #000000;
+            padding: 50px;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: rgb(8, 8, 8);
+            max-width: 400px;
+            width: 100%;
+            margin: auto;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h2 {
+            color: #6d6d6d;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        label {
+            font-size: 14px;
+            color: #f00000;
+            margin-bottom: 5px;
+            text-align: left;
+            display: block;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        input[type="text"]:focus {
+            border: 1px solid #4CAF50;
+            outline: none;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 14px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+        input[type="submit"]:active {
+            background-color: #388e3c;
+            transform: scale(1);
+        }
+        .container h3 {
+            margin-top: 20px;
+            color: #4CAF50;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        @media screen and (max-width: 600px) {
+            .container {
+                padding: 15px;
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Boston House Price Predictor</h2>
+        <form action="/predict" method="POST">
+            <label for="rm">Average number of rooms (rm)</label>
+            <input type="text" id="rm" name="rm" required>
+            <label for="lstat">% lower status population (lstat)</label>
+            <input type="text" id="lstat" name="lstat" required>
+            <label for="ptratio">Pupil-teacher ratio (ptratio)</label>
+            <input type="text" id="ptratio" name="ptratio" required>
+            <input type="submit" value="Predict">
+        </form>
+        {% if prediction_text %}
+            <h3>{{ prediction_text }}</h3>
+        {% endif %}
+    </div>
+</body>
+</html>
